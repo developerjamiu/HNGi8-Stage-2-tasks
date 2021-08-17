@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.user_input">
    <application
-        android:label="user_input"
+        android:label="User Input"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

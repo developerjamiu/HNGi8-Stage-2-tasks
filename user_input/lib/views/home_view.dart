@@ -11,47 +11,43 @@ class HomeView extends HookWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text('User Input')),
-      body: Padding(
+      body: ListView(
         padding: const EdgeInsets.all(24.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Form(
-              key: _formKey,
-              child: TextFormField(
-                controller: _userInputController,
-                validator: (val) =>
-                    val!.isEmpty ? 'Field cannot be empty' : null,
-                decoration: InputDecoration(
-                  labelText: 'Enter your Full Name',
-                  border: OutlineInputBorder(),
-                ),
+        children: <Widget>[
+          Form(
+            key: _formKey,
+            child: TextFormField(
+              controller: _userInputController,
+              validator: (val) => val!.isEmpty ? 'Field cannot be empty' : null,
+              decoration: InputDecoration(
+                labelText: 'Enter your Full Name',
+                border: OutlineInputBorder(),
               ),
             ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                if (_formKey.currentState!.validate())
-                  _output.value = _userInputController.text;
-                else
-                  _output.value = '';
-              },
-              style: ElevatedButton.styleFrom(minimumSize: Size.fromHeight(48)),
-              child: Text('Display Full Name'),
-            ),
-            SizedBox(height: 32),
-            Text(
-              'Output below:',
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: 8),
-            Text(
-              _output.value,
-              style: Theme.of(context).textTheme.headline4,
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
+          ),
+          SizedBox(height: 16),
+          ElevatedButton(
+            onPressed: () {
+              if (_formKey.currentState!.validate())
+                _output.value = _userInputController.text;
+              else
+                _output.value = '';
+            },
+            style: ElevatedButton.styleFrom(minimumSize: Size.fromHeight(48)),
+            child: Text('Display Full Name'),
+          ),
+          SizedBox(height: 32),
+          Text(
+            'Output below:',
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(height: 8),
+          Text(
+            _output.value,
+            style: Theme.of(context).textTheme.headline4,
+            textAlign: TextAlign.center,
+          ),
+        ],
       ),
     );
   }
